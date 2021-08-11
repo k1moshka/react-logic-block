@@ -1,0 +1,51 @@
+{
+  "name": "react-logic-block",
+  "version": "1.0.0",
+  "description": "Utils and components for using logic-block in react apps",
+  "main": "lib/index.js",
+  "scripts": {
+    "test": "npx jest",
+    "build": "npx babel src --out-dir lib --ignore \"**/*.test.js\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/k1moshka/react-logic-block.git"
+  },
+  "files": [
+    "lib"
+  ],
+  "keywords": [
+    "react",
+    "logic-block",
+    "react-form",
+    "form"
+  ],
+  "author": "Ilya Melishnikov <364844@gmail.com> (https://www.linkedin.com/in/ilya-melishnikov/)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/k1moshka/react-logic-block/issues"
+  },
+  "homepage": "https://github.com/k1moshka/react-logic-block#readme",
+  "dependencies": {
+    "core-js": "^3.14.0",
+    "lodash": "^4.17.21"
+  },
+  "peerDependencies": {
+    "react": ">=16.8.0",
+    "logic-block": ">=1.0.3"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.14.3",
+    "@babel/core": "^7.14.8",
+    "@babel/preset-env": "^7.14.4",
+    "@babel/preset-flow": "^7.14.5",
+    "@babel/preset-react": "^7.14.5",
+    "babel-eslint": "^10.1.0",
+    "babel-jest": "^27.0.2",
+    "babel-preset-jest": "^27.0.1",
+    "eslint": "^7.28.0",
+    "eslint-plugin-react": "^7.22.0",
+    "eslint-plugin-react-hooks": "^4.2.0",
+    "jest": "^27.0.4"
+  }
+}
