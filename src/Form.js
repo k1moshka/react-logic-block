@@ -1,4 +1,4 @@
-import React, { type Node, Component } from 'react'
+import React, { Component } from 'react'
 import getPath from 'lodash/get'
 import setPath from 'lodash/set'
 import merge from 'lodash/merge'
@@ -7,10 +7,7 @@ import Block, { reduce, fields, value } from 'logic-block'
 
 import { FormContext } from './context'
 import { wasPropChanged } from './util'
-
-type FieldHandler = {
-  validate: (any) => ?string
-}
+import { type FieldHandler, type FormProps } from './types'
 
 type FieldConfig = {
   [x: number]: FieldHandler
@@ -18,17 +15,6 @@ type FieldConfig = {
 
 type FormConfig = {
   [x: string]: FieldConfig
-}
-
-type Props = {
-  block: Block,
-  initialValues: Object,
-  children: Node,
-
-  validate: (formValues: Object) => ?Object | void,
-  onSubmit: (formValues: Object) => *,
-  onSubmitFailed: () => *,
-  onSubmitSuccess: () => *
 }
 
 type State = {
@@ -58,7 +44,7 @@ const handler = (cb) => {
   }
 }
 
-export default class Form extends Component<Props, State> {
+export default class Form extends Component<FormProps, State> {
   constructor(props) {
     super(props)
 

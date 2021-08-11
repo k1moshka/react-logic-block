@@ -1,10 +1,18 @@
 /* eslint-disable no-unused-vars */
 import { createContext } from 'react'
+import { type FormContextType } from './types'
 
 export const FormContext = createContext({
-  meta: {},
   values: {},
-  submit: (data: Object) => {},
-  setMeta: (key: string, value: any) => {},
-  change: (path: string, value: any): any => {}
+  util: {},
+  errors: {},
+  hasError: false,
+  formError: undefined,
+
+  change: (path, value) => {},
+  submit: () => Promise.resolve(),
+
+
+  registerField: (name, handler) => -1,
+  unregisterField: (name, fieldId) => true
 })

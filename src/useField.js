@@ -2,15 +2,9 @@ import { useEffect, useMemo, useContext } from 'react'
 import getPath from 'lodash/get'
 
 import { FormContext } from './context'
+import { type FieldInput } from './types'
 
-export type FieldInput = {
-  name: string,
-  value: any,
-  error?: ?string,
-  onChange: Function
-}
-
-export default function useField(name: string, validate: Function): FieldInput {
+export function useField(name: string, validate: Function): FieldInput {
   const { values, change, errors, registerField, unregisterField } = useContext(FormContext)
 
   useEffect(() => {

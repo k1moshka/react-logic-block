@@ -1,6 +1,7 @@
 import React from 'react'
 
-import useField, { type FieldInput } from './useField'
+import { useField } from './useField'
+import { type FieldInput } from './types'
 
 export type FieldProps = {
   input: FieldInput
