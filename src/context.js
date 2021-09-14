@@ -8,6 +8,7 @@ export const FormContext = createContext({
   errors: {},
   hasError: false,
   formError: undefined,
+  submitted: false,
 
   change: (path, value) => {},
   submit: () => Promise.resolve(),

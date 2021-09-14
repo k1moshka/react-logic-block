@@ -5,7 +5,7 @@ import { FormContext } from './context'
 import { type FieldInput } from './types'
 
 export function useField(name: string, validate: Function): FieldInput {
-  const { values, change, errors, registerField, unregisterField } = useContext(FormContext)
+  const { values, change, errors, submitted, registerField, unregisterField } = useContext(FormContext)
 
   useEffect(() => {
     const fieldId = registerField(name, { validate })
@@ -21,9 +21,10 @@ export function useField(name: string, validate: Function): FieldInput {
       name,
       value,
       error: fieldError,
+      submitted,
       onChange: (value: any) => {
         change(name, value)
       }
     }
-  }, [name, value, fieldError, change])
+  }, [name, value, submitted, fieldError, change])
 }

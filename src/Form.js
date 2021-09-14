@@ -22,7 +22,8 @@ type State = {
     values: Object,
     util: Object
   },
-  errors: Object
+  errors: Object,
+  submitted: boolean
 }
 
 type Handler = { cancel: Function, callback: Function }
@@ -52,7 +53,8 @@ export default class Form extends Component<FormProps, State> {
     this.blockInstance = this.createBlockInstance(this.props.initialValues)
 
     this.state = {
-      form: this.blockInstance()
+      form: this.blockInstance(),
+      submitted: false
     }
   }
 
@@ -125,7 +127,7 @@ export default class Form extends Component<FormProps, State> {
   }
 
   getContextValue = () => {
-    const { form: { values: { __util: util, ...values }, errors, hasError } } = this.state
+    const { form: { values: { __util: util, ...values }, errors, hasError }, submitted } = this.state
 
     return {
       registerField: this.registerField,
@@ -135,6 +137,7 @@ export default class Form extends Component<FormProps, State> {
       util,
       errors,
       hasError,
+      submitted,
 
       formError: getPath(errors, 'formError'),
       change: this.updateForm,
@@ -200,6 +203,14 @@ export default class Form extends Component<FormProps, State> {
     return omitBy(errors, v => typeof v === 'undefined')
   }
 
+  selfValidate = () => {
+    return new Promise((resolve) => {
+      this.setState({
+        form: this.blockInstance({ values: { t: 1 } })
+      }, resolve)
+    })
+  }
+
   updateForm = (path, value) => {
     this.setState({
       form: this.blockInstance(setPath({}, `values.${path}`, value))
@@ -213,7 +224,11 @@ export default class Form extends Component<FormProps, State> {
   }
 
   submit = async () => {
+    await this.selfValidate()
+
     const { form: { values, hasValidationError } } = this.state
+    this.setState({ submitted: true })
+
     if (hasValidationError) {
       return
     }
