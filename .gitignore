@@ -3,3 +3,4 @@ node_modules
 _example
 lib
 package-lock.json
+yarn-error.log

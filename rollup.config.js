@@ -1,20 +1,24 @@
-import babel from '@rollup/plugin-babel'
-import flowEntry from 'rollup-plugin-flow-entry'
-import copy from 'rollup-plugin-copy'
+const esbuild = require("rollup-plugin-esbuild").default;
+const dts = require("rollup-plugin-dts").default;
 
-export default {
-  input: 'src/index.js',
-  output: {
-    file: 'lib/index.js',
-    format: 'cjs'
+const config = [
+  {
+    input: "src/index.ts",
+    output: {
+      file: "lib/index.js",
+      format: "esm"
+    },
+    plugins: [esbuild()],
+    external: ["lodash", "react", "logic-block"]
   },
-  plugins: [
-    copy({
-      targets: [{ src: 'src/types', dest: 'lib' }]
-    }),
-    flowEntry({
-      types: 'lib/types/index.js'
-    }),
-    babel()
-  ]
-}
+  {
+    input: "src/index.ts",
+    output: {
+      file: "lib/index.d.ts",
+      format: "es"
+    },
+    plugins: [dts()],
+  }
+];
+
+module.exports = config;
