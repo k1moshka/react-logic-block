@@ -187,6 +187,7 @@ export default class Form<
 
       formError: getPath(errors, "formError"),
       change: this.updateForm,
+      update: this.updateValuesBlock,
       submit: this.submit,
     };
   };
@@ -269,6 +270,12 @@ export default class Form<
         },
         resolve as () => void
       );
+    });
+  };
+
+  updateValuesBlock: FormContextType["update"] = (valuesSlice) => {
+    this.setState({
+      form: this.blockInstance(valuesSlice),
     });
   };
 

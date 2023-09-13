@@ -91,9 +91,10 @@ Context of current form
 | util            | `TFormUtil extends Object`                      | Current util values of form                                                            |
 | errors          | `Object`                                        | Current errors of form                                                                 |
 | hasError        | `boolean`                                       | Shows if form has any error                                                            |
-| formError       | `undefined                                      | string`                                                                                | Message of the form error |
+| formError       | `undefined \| string`                           | Message of the form error                                                              |
 | submitted       | `boolean`                                       | Shows if the form where successfully submitted                                         |
 | change          | `(fieldName: string, value: any) => void`       | Change field value function                                                            |
+| update          | `(RecursivePartial<TFormValues>) => void`       | Original update function from values block passed to the `Form`                        |
 | submit          | `() => void`                                    | Submit action function                                                                 |
 | registerField   | `(name: string, field: FieldHandler) => number` | Registering field function. Custom field component should be registered on mount       |
 | unregisterField | `(name: string, fieldId: number) => boolean`    | Unregistering field function. Custom field component should be unregistered on unmount |

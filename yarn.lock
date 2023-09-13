@@ -2794,10 +2794,10 @@ lodash@^4.17.21, lodash@^4.7.0:
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.21.tgz#679591c564c3bffaae8454cf0b3df370c3d6911c"
   integrity sha512-v2kDEe57lecTulaDIuNTPy3Ry4gLGJ6Z1O3vE1krgXZNrsQ+LFTGHVxVjcXPs17LhbZVGedAJv8XZ1tvj5FvSg==
 
-logic-block@^1.4.0:
-  version "1.4.0"
-  resolved "https://registry.yarnpkg.com/logic-block/-/logic-block-1.4.0.tgz#867b9148a4b91b7a2c7d1bcb9d3922f862ced49e"
-  integrity sha512-kJYfhhvgp6tCrgemnnGERxr2ds1bbsX6FReCcdNVroMUd5FS/cSFMBi7p5m2ERA+lZPUtpVppLhxpuu8qMVhsQ==
+logic-block@^1.4.4:
+  version "1.4.4"
+  resolved "https://registry.yarnpkg.com/logic-block/-/logic-block-1.4.4.tgz#afd2ac78e0edfd67ba3dec8bd99827af688b21f7"
+  integrity sha512-Q7VeyRjVKHiFNsC6zPouUYLyaNXATk1NwcDXk8RG/sYQ5+I5U8jcMOJL520SF52QLhn1rB0RI2IriQrMH4WZHg==
   dependencies:
     core-js "^3.14.0"
     lodash "^4.17.21"
