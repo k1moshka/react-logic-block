@@ -1,6 +1,6 @@
 {
   "name": "react-logic-block",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "Utils and components for using logic-block in react apps",
   "main": "lib/index.js",
   "type": "module",

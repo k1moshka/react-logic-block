@@ -266,7 +266,13 @@ export default class Form<
     return new Promise((resolve) => {
       this.setState(
         {
-          form: this.blockInstance({ values: { t: 1 } } as any),
+          form: this.blockInstance(
+            (v) =>
+              ({
+                // @ts-expect-error _svaldiate is only for internal usage, and should not be in types
+                values: { __svalidate: (v.values.__svalidate ?? 0) + 1 },
+              } as any)
+          ),
         },
         resolve as () => void
       );
@@ -275,7 +281,7 @@ export default class Form<
 
   updateValuesBlock: FormContextType["update"] = (valuesSlice) => {
     this.setState({
-      form: this.blockInstance(valuesSlice),
+      form: this.blockInstance({ values: valuesSlice } as any),
     });
   };
 
@@ -287,7 +293,7 @@ export default class Form<
 
   updateUtil = (path: string, value) => {
     this.setState({
-      form: this.blockInstance(setPath({}, `util.${path}`, value)),
+      form: this.blockInstance(setPath({}, `values.__util.${path}`, value)),
     });
   };
 
